@@ -1,0 +1,69 @@
+body {
+  margin:0;
+  padding:0;
+  background-color: white;
+}
+
+div {
+  /*margin:0!important;*/
+  padding:0!important;
+}
+
+#values {
+  margin:18px;
+  height:200px;
+  margin-top:30px;
+  margin-bottom:20px;
+  width: 55%;
+}
+
+.label-primary{
+  font-size:100% !important;
+}
+
+.sidepanel{
+  height:800px;
+  background-color: lightgrey;
+  padding: 25px !important;
+}
+
+.filterpanel{
+  background-color: #0066cc;
+  height:60px;
+  margin-left: 100px;
+margin-right: 110px;
+}
+
+.jumbotron{
+  padding:15px !important;
+}
+
+.tooltipss{
+  background-color:#0066cc;
+  margin-right: 125px;
+  margin-left: 420px;
+  color:white;
+  padding:10px;
+  border-radius:10px;
+}
+
+.maintekst{
+  margin: 0;
+padding: 15px;
+margin-left: 350px;
+color: white;
+}
+
+textarea{
+  font-size:20px;
+  padding:10px;
+}
+
+.selected{
+  background-color:orange !important;
+}
+
+.label{
+  display: inline-block !important;
+  margin-bottom:5px;
+}
