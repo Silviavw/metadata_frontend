@@ -2,6 +2,7 @@ body {
   margin:0;
   padding:0;
   background-color: white;
+  font-family: 'Open Sans', sans-serif;
 }
 
 div {
@@ -10,11 +11,13 @@ div {
 }
 
 #values {
-  margin:18px;
+  /*margin:18px;*/
   height:200px;
-  margin-top:30px;
   margin-bottom:20px;
-  width: 55%;
+  width: 71%;
+  margin-left: 350px;
+  float: right;
+  margin-top: 100px;
 }
 
 .label-primary{
@@ -23,15 +26,15 @@ div {
 
 .sidepanel{
   height:800px;
-  background-color: lightgrey;
+  background-color: #E1E1E1;
   padding: 25px !important;
+  margin-top: 50px;
 }
 
 .filterpanel{
-  background-color: #0066cc;
+  background-color: rgb(51, 122, 183);
   height:60px;
-  margin-left: 100px;
-margin-right: 110px;
+  position: absolute;
 }
 
 .jumbotron{
@@ -64,6 +67,35 @@ textarea{
 }
 
 .label{
-  display: inline-block !important;
-  margin-bottom:5px;
+   border-radius: 0;
+   display: block!important;
+   margin-bottom:15px;
+   cursor:pointer;
+   text-align: left;
+   padding:10px;
+   margin-right: 40px;
+}
+
+h4 {
+  border-bottom: 1px solid black;
+  padding:5px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.question{
+  border-radius: 50%;
+  width: 20px;
+  height: auto;
+  background: #9FD3A1;
+  float: right;
+  margin: 7px;
+  cursor:pointer;
+  margin-top: -42px;
+}
+
+.question span{
+  padding:7px;
+  font-weight:800;
+  color:white;
 }

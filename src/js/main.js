@@ -9,7 +9,6 @@ import Taxonomy from './models/taxonomy';
 (function () {
   //collections
 
-
   //models
 
   //views
