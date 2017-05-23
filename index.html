@@ -10,28 +10,38 @@
   <div class="container">
 
     <!-- Classificatie -->
-
     <div class="row">
       <div class="col-md-3">
         <div class="sidepanel">
             <h4>Soort vraag</h4>
             <div class="taxonomy">
             <span class='reproductie label label-primary'>Reproductie</span>
-            <div class='question'><span>?</span></div>
+            <div class='question'><span>?</span><span class="tooltip-taxonomy">Vragen op reproductieniveau zijn vragen waarbij de leerling zelf niets wezenlijks toe hoeft te voegen aan datgene wat hij geleerd heeft. Met deze vragen kan inzichtelijk gemaakt worden of de leerling de geleerde stof kan reproduceren. Denk bijvoorbeeld aan het kunnen reproduceren van warenkennis, gereedschapskennis, een stappenplan of de werking van apparatuur.</span></div>
             <span class='toepassing label label-primary'>Toepassing</span>
-            <div class='question'><span>?</span></div>
+            <div class='question'><span>?</span><span class="tooltip-taxonomy">Bij toepassingsvragen moet je de leerstof in een onbekende situatie gebruiken om een probleem op te lossen.</span></div>
             <span class='inzicht label label-primary'>Inzicht</span>
-            <div class='question'><span>?</span></div>
+            <div class='question'><span>?</span><span class="tooltip-taxonomy">De leerling krijgt geen methode, context of situatie aangeboden, maar alleen een vraagstuk. Hij moet zelf bepalen hoe hij het gaat aanpakken. De leerling heeft alleen de leerstof tot zijn beschikking om de vraag op te lossen. Hij laat zien dat hij vanuit verschillende, ook nieuwe, perspectieven kan denken.</span></div>
           </div>
-            <h4>Snel zoeken</h4>
+            <!-- <h4>Snel zoeken</h4>
             <div class="keywords">
-            </div>
+            </div> -->
         </div>
       </div>
+
       <div class="col-md-11 filterpanel">
-        <!-- <div class="">
-      </div> -->
-        <textarea id='values'></textarea>
+      <div class="everything">
+        <h3 class="vraagantwoordtitle">Vraag</h3>
+        <div class="textvak vraag" id='values' contenteditable></div>
+        <h3 class="vraagantwoordtitle">Antwoord</h3>
+        <div class="textvak antwoord" contenteditable></div>
+
+        <a class="save">OPSLAAN</a>
+
+        <h2 class="feedback">FEEDBACK</h2>
+        <div class="comments">
+        </div>
+
+      </div>
         <!-- <div class='general'></div> -->
         <div class="tips">
         <!-- <p class="tooltipss">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
@@ -63,7 +73,6 @@
             </ul>
           </div>
         </div> -->
-
       </div>
     </div>
 

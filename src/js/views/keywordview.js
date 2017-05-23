@@ -4,16 +4,25 @@ import _ from 'underscore';
 
 const KeywordView = View.extend({
     initialize: function(options) {
-      this.options = options
+      this.options = options;
       this.render();
+// };
+
+// this.checkspelling(settings);
+
     },
     render: function(){
-      console.log(this.options.keywords);
+      var keywords = this.options.keywords.split(" ");
       $(".keywords").html("");
-      for (var index in this.options.keywords) {
-        $(".keywords").append("<a target='_blank' href='http://www.google.com/search?q="+this.options.keywords[index]+"'>"+this.options.keywords[index]+" </a>");
+      for (var keyword in keywords) {
+        $(".keywords").append("<a class='keyword' target='_blank' href='http://www.google.com/search?q="+keywords[keyword]+"'>"+keywords[keyword]+" </a>");
       }
-    }
+    },
+    // checkspelling: function(settings){
+    //   $.ajax(settings).done(function (response) {
+    //     console.log(response);
+    //   });
+    // }
 	});
 
   export default KeywordView;

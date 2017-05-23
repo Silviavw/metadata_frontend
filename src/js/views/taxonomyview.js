@@ -7,6 +7,7 @@ const TaxonomyView = View.extend({
     el: 'div',
     initialize: function(options) {
       this.options = options
+      // this.tooltip();
       this.render();
 
         $( ".reproductie" ).on( "click", function() {
@@ -50,7 +51,17 @@ const TaxonomyView = View.extend({
         $(".tips").html("");
           break;
       }
-    }
+    },
+//     tooltip: function(){
+//       $( ".question" ).hover(
+//   function() {
+//     var suggestionsWrapper = $("<span class='tooltip-taxonomy'>TESTTEST</span>");
+//     $(this).append(suggestionsWrapper);
+//     }, function() {
+//     // $(this).children(".tooltip-taxonomy").remove();
+//   }
+// );
+//     }
 	});
 
   export default TaxonomyView;
