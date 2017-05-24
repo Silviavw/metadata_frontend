@@ -4,32 +4,33 @@ import _ from 'underscore';
 import Taxonomy from '../models/taxonomy';
 
 const TaxonomyView = View.extend({
-    el: 'div',
     initialize: function(options) {
       this.options = options
       // this.tooltip();
       this.render();
 
         $( ".reproductie" ).on( "click", function() {
-              $(this).addClass('selected');
+              $(this).addClass('handselected');
               $(".toepassing").removeClass("selected");
               $(".inzicht").removeClass("selected");
           });
 
           $( ".toepassing" ).on( "click", function() {
-                $(this).addClass('selected');
+                $(this).addClass('handselected');
                 $(".reproductie").removeClass("selected");
                 $(".inzicht").removeClass("selected");
             });
 
           $( ".inzicht" ).on( "click", function() {
-                $(this).addClass('selected');
+                $(this).addClass('handselected');
                 $(".reproductie").removeClass("selected");
                 $(".toepassing").removeClass("selected");
             });
 
     },
     render: function(){
+      if ($( ".reproductie" ).hasClass("handselected") === false&&$( ".toepassing" ).hasClass("handselected") === false&&$( ".inzicht" ).hasClass("handselected") === false){
+
       switch (this.options.taxonomy) {
         case "1":
         $(".reproductie").addClass("selected");
@@ -47,11 +48,12 @@ const TaxonomyView = View.extend({
         $(".toepassing").removeClass("selected");
           break;
         default:
-        // $(".taxonomy").html("");
         $(".tips").html("");
           break;
       }
-    },
+    }
+
+    }
 //     tooltip: function(){
 //       $( ".question" ).hover(
 //   function() {

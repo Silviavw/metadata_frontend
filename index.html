@@ -10,9 +10,40 @@
   <div class="container">
 
     <!-- Classificatie -->
-    <div class="row">
-      <div class="col-md-3">
+    <div class="row tax">
+      <script id="feedbackTemplate" type="text/template">
+        <!-- <div class="modall"> -->
+          <div class="col-md-6 col-md-offset-3 backgr">
+
+          <h2 class="modaltextt">Geef feedback op de onderstaande vraag:</h2>
+
+          <div class="questionexample">
+            <span class="naamtitle">Naam:</span><input type="text" class='namefield'/>
+
+            <textarea class='commentarea'></textarea>
+            <a class="save opslaan">Verzenden</a>
+
+            <div class="qwrapper">
+              <div class="previewwrapper" style="background-color:rgb(51, 122, 183);">
+                <span class="minititle">Vraag:</span>
+                <p class=txt><%= question %></p>
+              </div>
+            <div class="previewwrapper">
+              <span class="minititle">Antwoord:</span>
+              <p class=txt><%= answer %></p>
+            </div>
+
+          </div>
+          </div>
+        </div>
+
+        <!-- </div> -->
+      </script>
+
+      <div class="col-md-3" style='padding:0;'>
         <div class="sidepanel">
+
+
             <h4>Soort vraag</h4>
             <div class="taxonomy">
             <span class='reproductie label label-primary'>Reproductie</span>
@@ -22,6 +53,7 @@
             <span class='inzicht label label-primary'>Inzicht</span>
             <div class='question'><span>?</span><span class="tooltip-taxonomy">De leerling krijgt geen methode, context of situatie aangeboden, maar alleen een vraagstuk. Hij moet zelf bepalen hoe hij het gaat aanpakken. De leerling heeft alleen de leerstof tot zijn beschikking om de vraag op te lossen. Hij laat zien dat hij vanuit verschillende, ook nieuwe, perspectieven kan denken.</span></div>
           </div>
+
             <!-- <h4>Snel zoeken</h4>
             <div class="keywords">
             </div> -->
@@ -37,42 +69,14 @@
 
         <a class="save">OPSLAAN</a>
 
-        <h2 class="feedback">FEEDBACK</h2>
+        <div class="sameheight"><h2 class="feedback">FEEDBACK</h2><a class="deel">Deel link</a></div>
         <div class="comments">
         </div>
 
       </div>
-        <!-- <div class='general'></div> -->
         <div class="tips">
-        <!-- <p class="tooltipss">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
       </div>
-        <!-- <div class="jumbotron">
-          <h4>Synoniemen</h4>
-          <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Woord <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </div>
-          <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Woord <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </div>
-        </div> -->
+
       </div>
     </div>
 
