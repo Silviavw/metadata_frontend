@@ -14,7 +14,8 @@ const QuestionfeedbackView = View.extend({
       this.render();
     },
     render: function(){
-      $(".modalshare").remove();
+      console.log("REMOVER THIS SHIT",$(".modalshare"));
+      $("#modalshare, .overlay").remove();
 
       var question = new Question({url: 'http://localhost/afstuderen/php-crud-api/api.php/question/1'});
       question.fetch({

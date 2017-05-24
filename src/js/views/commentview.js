@@ -34,15 +34,15 @@ const CommentView = View.extend({
     },
     copyclipboard: function(){
       var copyTextarea = document.querySelector('.urlval');
-    copyTextarea.select();
+      copyTextarea.select();
 
-    try {
-      var successful = document.execCommand('copy');
-      var msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Copying text command was ' + msg);
-    } catch (err) {
-      console.log('Oops, unable to copy');
-    }
+      try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copying text command was ' + msg);
+      } catch (err) {
+        console.log('Oops, unable to copy');
+      }
     }
   });
 
