@@ -10,59 +10,34 @@ const SpellingView = View.extend({
       this.render();
     },
     render: function(){
-      var word = this.options.spelling.word;
-      var suggesties = this.options.spelling.suggestion;
+      var word = this.options.itemclass;
+      var suggesties = this.options.suggestions;
 
-      if (this.options.spelling.correct == false){
+      if($(word)){
 
-        var ditelement = $('.word:contains('+this.options.spelling.word+')');
-        if($(ditelement).find('ul.suggestions-wrapper').length == 0){
-
-        ditelement.addClass('badspelling');
-
-        // Create suggestions wrapper
-          console.log(ditelement);
-          var suggestionsWrapper = $("<ul class='suggestions-wrapper'></ul>");
-          if(ditelement.find('ul.suggestions-wrapper').length == 0){
-            console.log("DOES NOT EXIST");
-          ditelement.append(suggestionsWrapper);
-          }
-
-        // Add suggestion list to wrapper
+        // Create suggestions list
+        var suggestionsWrapper = $("<ul class='suggestions-wrapper'></ul>");
         suggesties.forEach(suggestion => {
-          var sug = $("<li>"+suggestion+"</li>");
-          $('.suggestions-wrapper').append(sug);
-          console.log(suggestion);
+          var suggestionListItem = $("<li>"+suggestion+"</li>")
+            .on('click', onSuggestionClick)
+          suggestionsWrapper.append(suggestionListItem);
+        });
 
-          // .on('click', function(e) {
-          //
-          //   // word = e.currentTarget.innerHTML;
-          //   // var replaceable = ditelement.text().split(" ")[0];
-          //   // console.log("replace "+replaceable+" with "+word);
-          //   // ditelement.text(ditelement.text().split(" ")[0].replace("is", word+" "));
-          //
-          //   // var spelling = new Spelling({url: "http://localhost:8000/spelling?text="+$('#values').text()});
-          //
-          //   // spelling.fetch({
-          //   //   success: function(collection, response) {
-          //   //       var words = $("#values").text().split(" ");
-          //   //       $("#values").empty();
-          //   //       $.each(words, function(i, v) {
-          //   //       $("#values").append($("<span class='word'>").text(v+" "));
-          //   //       });
-          //   //       for (var i = 0; i < response.length; i++) {
-          //   //           var spellingView = new SpellingView({spelling: response[i]});
-          //   //       }
-          //   //   }
-          //   // });
-          //
-          // });
-        })
-
+        // Append suggestion list to word span
+        var wordElement = $(word)
+        wordElement.append(suggestionsWrapper);
       }
 
+      // Replace wrong spelling with suggestion
+      function onSuggestionClick(e) {
+        var replacementWord = e.currentTarget.innerHTML;
+        wordElement.html(replacementWord)
+
+        word.split('.').forEach(singleClass => {
+          wordElement.removeClass(singleClass);
+        })
+      }
     }
-  }
 	});
 
   export default SpellingView;

@@ -30,14 +30,19 @@ const TextAreaView = View.extend({
       clearTimeout(this.typingTimer);
     },
     doneTyping: function(){
-      var keywordView = new KeywordView({keywords: $('#values').text()});
-      var taxonomy = new Taxonomy({url: "http://localhost:8000/task?introduction="+$('#values').text()});
-      var spelling = new Spelling({url: "http://localhost:8000/spelling?text="+$('#values').text()});
+      $('ul.suggestions-wrapper').remove();
+
+      var values = $('#values').text()
+
+      console.log('value;',values)
+      var keywordView = new KeywordView({keywords: values});
+      console.log($('#values').text())
+      var taxonomy = new Taxonomy({url: "http://localhost:8000/task?introduction=" + values});
+      var spelling = new Spelling({url: "http://localhost:8000/spelling?text=" + values});
 
       taxonomy.fetch({
         success: function(collection, response) {
           var taxonomyView = new TaxonomyView({taxonomy: response.category});
-          // var synonymView = new SynonymView({synonyms: response.synonymns});
         }
       });
 
@@ -45,12 +50,24 @@ const TextAreaView = View.extend({
         success: function(collection, response) {
             var words = $("#values").text().split(" ");
             $("#values").empty();
+
             $.each(words, function(i, v) {
-            $("#values").append($("<span class='word'>").text(v+" "));
+              if(!response[i] || response[i].correct) {
+                // Set good spelling word
+                $("#values").append($("<span class='word'>").text(v + " "));
+              } else {
+                // Create badspelling word
+                var badspelling = $("#values")
+                  .append($("<span class='word badspelling " + i + "'>")
+                  .text(v + " "));
+
+                // Append suggestions list
+                var spellingView = new SpellingView({
+                  itemclass: '.badspelling.' + i,
+                  suggestions: response[i].suggestion
+                });
+              }
             });
-            for (var i = 0; i < response.length; i++) {
-                var spellingView = new SpellingView({spelling: response[i]});
-            }
         }
       });
     },

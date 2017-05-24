@@ -23,7 +23,6 @@ import QuestionfeedbackView from './views/questionfeedbackview';
 	var app_router = new AppRouter;
 
 	app_router.on('route:getPost', function (id) {
-		$(".overlay").remove();
 		var questionfeedbackView = new QuestionfeedbackView();
 	});
 

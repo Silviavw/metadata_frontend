@@ -46,6 +46,4 @@ const CommentView = View.extend({
     }
   });
 
-
-
   export default CommentView;
