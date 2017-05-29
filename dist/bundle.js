@@ -13997,7 +13997,7 @@ var CommentView = _backbone.View.extend({
   },
   showmodal: function showmodal() {
     (0, _jquery2.default)('body').append('<div class="overlay"></div><div id="modalshare" class="modall"><h5>Deel deze vraag</h5><input class="urlval" type="text"/><a class="btncopy">COPY</a></div>');
-    (0, _jquery2.default)(".urlval").val("http://67.205.189.184/#/posts/1");
+    (0, _jquery2.default)(".urlval").val("https://67.205.189.184/#/posts/1");
   },
   hidemodal: function hidemodal() {
     (0, _jquery2.default)(".overlay").remove();
@@ -14174,8 +14174,8 @@ var TextAreaView = _backbone.View.extend({
     console.log('value;', values);
     var keywordView = new _keywordview2.default({ keywords: values });
     console.log((0, _jquery2.default)('#values').text());
-    var taxonomy = new _taxonomy2.default({ url: "http://188.226.157.168/task?introduction=" + values });
-    var spelling = new _spelling2.default({ url: "http://188.226.157.168/spelling?text=" + values });
+    var taxonomy = new _taxonomy2.default({ url: "https://188.226.157.168/task?introduction=" + values });
+    var spelling = new _spelling2.default({ url: "https://188.226.157.168/spelling?text=" + values });
 
     taxonomy.fetch({
       success: function success(collection, response) {

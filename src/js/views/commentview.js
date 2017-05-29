@@ -26,7 +26,7 @@ const CommentView = View.extend({
     },
     showmodal: function(){
       $('body').append('<div class="overlay"></div><div id="modalshare" class="modall"><h5>Deel deze vraag</h5><input class="urlval" type="text"/><a class="btncopy">COPY</a></div>');
-      $(".urlval").val("http://67.205.189.184/#/posts/1");
+      $(".urlval").val("https://67.205.189.184/#/posts/1");
     },
     hidemodal: function(){
       $(".overlay").remove();
