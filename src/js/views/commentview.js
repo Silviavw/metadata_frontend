@@ -15,7 +15,7 @@ const CommentView = View.extend({
       'click .btncopy': 'copyclipboard'
     },
     render: function(){
-      var comment = new Comment({url: 'http://localhost/afstuderen/php-crud-api/api.php/comment'});
+      var comment = new Comment({url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/comment'});
       comment.fetch({
         success: function(collection, response) {
           for (var records of response.comment.records) {
@@ -26,7 +26,7 @@ const CommentView = View.extend({
     },
     showmodal: function(){
       $('body').append('<div class="overlay"></div><div id="modalshare" class="modall"><h5>Deel deze vraag</h5><input class="urlval" type="text"/><a class="btncopy">COPY</a></div>');
-      $(".urlval").val("http://localhost/afstuderen/backbone_afstudeeropdracht/#/posts/1");
+      $(".urlval").val("http://67.205.189.184/#/posts/1");
     },
     hidemodal: function(){
       $(".overlay").remove();

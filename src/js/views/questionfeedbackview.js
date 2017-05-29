@@ -17,7 +17,7 @@ const QuestionfeedbackView = View.extend({
       console.log("REMOVER THIS SHIT",$(".modalshare"));
       $("#modalshare, .overlay").remove();
 
-      var question = new Question({url: 'http://localhost/afstuderen/php-crud-api/api.php/question/1'});
+      var question = new Question({url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/1'});
       question.fetch({
         success: function(collection, response) {
           $('.vraag').text(response.question);
@@ -34,7 +34,7 @@ const QuestionfeedbackView = View.extend({
       var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://localhost/afstuderen/php-crud-api/api.php/comment",
+          "url": "https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/comment",
           "method": "POST",
           "headers": {
             "content-type": "application/x-www-form-urlencoded",

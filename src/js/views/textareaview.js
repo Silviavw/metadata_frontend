@@ -37,8 +37,8 @@ const TextAreaView = View.extend({
       console.log('value;',values)
       var keywordView = new KeywordView({keywords: values});
       console.log($('#values').text())
-      var taxonomy = new Taxonomy({url: "http://localhost:8000/task?introduction=" + values});
-      var spelling = new Spelling({url: "http://localhost:8000/spelling?text=" + values});
+      var taxonomy = new Taxonomy({url: "http://188.226.157.168/task?introduction=" + values});
+      var spelling = new Spelling({url: "http://188.226.157.168/spelling?text=" + values});
 
       taxonomy.fetch({
         success: function(collection, response) {
@@ -72,7 +72,7 @@ const TextAreaView = View.extend({
       });
     },
     render: function(){
-      var question = new Question({url: 'http://localhost/afstuderen/php-crud-api/api.php/question/1'});
+      var question = new Question({url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/1'});
       question.fetch({
         success: function(collection, response) {
           $('.vraag').text(response.question);
@@ -84,7 +84,7 @@ const TextAreaView = View.extend({
       $.ajax({
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost/afstuderen/php-crud-api/api.php/question/1",
+        "url": "https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/1",
         "method": "PUT",
         "headers": {
           "content-type": "application/x-www-form-urlencoded",
