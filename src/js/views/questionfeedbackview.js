@@ -37,8 +37,7 @@ const QuestionfeedbackView = View.extend({
           "url": "https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/comment",
           "method": "POST",
           "headers": {
-            "content-type": "application/x-www-form-urlencoded",
-            "cache-control": "no-cache",
+            "content-type": "application/x-www-form-urlencoded"
           },
           "data": {
             "comment": $('.commentarea').val(),

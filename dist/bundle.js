@@ -14080,8 +14080,7 @@ var QuestionfeedbackView = _backbone.View.extend({
       "url": "https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/comment",
       "method": "POST",
       "headers": {
-        "content-type": "application/x-www-form-urlencoded",
-        "cache-control": "no-cache"
+        "content-type": "application/x-www-form-urlencoded"
       },
       "data": {
         "comment": (0, _jquery2.default)('.commentarea').val(),
@@ -14174,8 +14173,8 @@ var TextAreaView = _backbone.View.extend({
     console.log('value;', values);
     var keywordView = new _keywordview2.default({ keywords: values });
     console.log((0, _jquery2.default)('#values').text());
-    var taxonomy = new _taxonomy2.default({ url: "https://188.226.157.168/task?introduction=" + values });
-    var spelling = new _spelling2.default({ url: "https://188.226.157.168/spelling?text=" + values });
+    var taxonomy = new _taxonomy2.default({ url: "http://188.226.157.168/task?introduction=" + values });
+    var spelling = new _spelling2.default({ url: "http://188.226.157.168/spelling?text=" + values });
 
     taxonomy.fetch({
       success: function success(collection, response) {
@@ -14222,8 +14221,7 @@ var TextAreaView = _backbone.View.extend({
       "url": "https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/1",
       "method": "PUT",
       "headers": {
-        "content-type": "application/x-www-form-urlencoded",
-        "cache-control": "no-cache"
+        "content-type": "application/x-www-form-urlencoded"
       },
       "data": {
         "question": (0, _jquery2.default)('.vraag').text(),
