@@ -11,6 +11,18 @@ import QuestionfeedbackView from './views/questionfeedbackview';
 // import mongo from 'mongodb';
 
 (function () {
+
+	var proxiedSync = Backbone.sync;
+  Backbone.sync = function(method, model, options) {
+    options || (options = {});
+    if (!options.crossDomain) {
+      options.crossDomain = true;
+    }
+    if (!options.xhrFields) {
+      options.xhrFields = {withCredentials:true};
+    }
+    return proxiedSync(method, model, options);
+  };
   //collections
 	// Retrieve
 	var AppRouter = Backbone.Router.extend({
@@ -33,17 +45,5 @@ import QuestionfeedbackView from './views/questionfeedbackview';
 	});
 	// Start Backbone history a necessary step for bookmarkable URL's
 	Backbone.history.start();
-
-  var proxiedSync = Backbone.sync;
-  Backbone.sync = function(method, model, options) {
-    options || (options = {});
-    if (!options.crossDomain) {
-      options.crossDomain = true;
-    }
-    if (!options.xhrFields) {
-      options.xhrFields = {withCredentials:true};
-    }
-    return proxiedSync(method, model, options);
-  };
 
 })();
