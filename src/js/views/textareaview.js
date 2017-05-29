@@ -37,8 +37,8 @@ const TextAreaView = View.extend({
       console.log('value;',values)
       var keywordView = new KeywordView({keywords: values});
       console.log($('#values').text())
-      var taxonomy = new Taxonomy({url: "https://188.226.157.168/task?introduction=" + values});
-      var spelling = new Spelling({url: "https://188.226.157.168/spelling?text=" + values});
+      var taxonomy = new Taxonomy({url: "http://188.226.157.168/task?introduction=" + values});
+      var spelling = new Spelling({url: "http://188.226.157.168/spelling?text=" + values});
 
       taxonomy.fetch({
         success: function(collection, response) {
