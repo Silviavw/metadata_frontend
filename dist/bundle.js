@@ -13965,7 +13965,7 @@ var CommentView = _backbone.View.extend({
     'click .btncopy': 'copyclipboard'
   },
   render: function render() {
-    var comment = new _comment2.default({ url: 'http://localhost/afstuderen/php-crud-api/api.php/comment' });
+    var comment = new _comment2.default({ url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/comment' });
     comment.fetch({
       success: function success(collection, response) {
         var _iteratorNormalCompletion = true;
@@ -13997,7 +13997,7 @@ var CommentView = _backbone.View.extend({
   },
   showmodal: function showmodal() {
     (0, _jquery2.default)('body').append('<div class="overlay"></div><div id="modalshare" class="modall"><h5>Deel deze vraag</h5><input class="urlval" type="text"/><a class="btncopy">COPY</a></div>');
-    (0, _jquery2.default)(".urlval").val("http://localhost/afstuderen/backbone_afstudeeropdracht/#/posts/1");
+    (0, _jquery2.default)(".urlval").val("http://67.205.189.184/#/posts/1");
   },
   hidemodal: function hidemodal() {
     (0, _jquery2.default)(".overlay").remove();
@@ -14060,7 +14060,7 @@ var QuestionfeedbackView = _backbone.View.extend({
     console.log("REMOVER THIS SHIT", (0, _jquery2.default)(".modalshare"));
     (0, _jquery2.default)("#modalshare, .overlay").remove();
 
-    var question = new _question2.default({ url: 'http://localhost/afstuderen/php-crud-api/api.php/question/1' });
+    var question = new _question2.default({ url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/1' });
     question.fetch({
       success: function (collection, response) {
         (0, _jquery2.default)('.vraag').text(response.question);
@@ -14077,7 +14077,7 @@ var QuestionfeedbackView = _backbone.View.extend({
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://localhost/afstuderen/php-crud-api/api.php/comment",
+      "url": "https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/comment",
       "method": "POST",
       "headers": {
         "content-type": "application/x-www-form-urlencoded",
@@ -14174,8 +14174,8 @@ var TextAreaView = _backbone.View.extend({
     console.log('value;', values);
     var keywordView = new _keywordview2.default({ keywords: values });
     console.log((0, _jquery2.default)('#values').text());
-    var taxonomy = new _taxonomy2.default({ url: "http://localhost:8000/task?introduction=" + values });
-    var spelling = new _spelling2.default({ url: "http://localhost:8000/spelling?text=" + values });
+    var taxonomy = new _taxonomy2.default({ url: "http://188.226.157.168/task?introduction=" + values });
+    var spelling = new _spelling2.default({ url: "http://188.226.157.168/spelling?text=" + values });
 
     taxonomy.fetch({
       success: function success(collection, response) {
@@ -14207,7 +14207,7 @@ var TextAreaView = _backbone.View.extend({
     });
   },
   render: function render() {
-    var question = new _question2.default({ url: 'http://localhost/afstuderen/php-crud-api/api.php/question/1' });
+    var question = new _question2.default({ url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/1' });
     question.fetch({
       success: function success(collection, response) {
         (0, _jquery2.default)('.vraag').text(response.question);
@@ -14219,7 +14219,7 @@ var TextAreaView = _backbone.View.extend({
     _jquery2.default.ajax({
       "async": true,
       "crossDomain": true,
-      "url": "http://localhost/afstuderen/php-crud-api/api.php/question/1",
+      "url": "https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/1",
       "method": "PUT",
       "headers": {
         "content-type": "application/x-www-form-urlencoded",
