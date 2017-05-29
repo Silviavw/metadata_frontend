@@ -14436,28 +14436,40 @@ window.$ = window.jQuery = _jquery2.default;
 // import mongo from 'mongodb';
 
 (function () {
-	//collections
-	// Retrieve
-	var AppRouter = Backbone.Router.extend({
-		routes: {
-			"posts/:id": "getPost",
-			"": "defaultRoute"
-		}
-	});
-	// Instantiate the router
-	var app_router = new AppRouter();
+		//collections
+		// Retrieve
+		var AppRouter = Backbone.Router.extend({
+				routes: {
+						"posts/:id": "getPost",
+						"": "defaultRoute"
+				}
+		});
+		// Instantiate the router
+		var app_router = new AppRouter();
 
-	app_router.on('route:getPost', function (id) {
-		var questionfeedbackView = new _questionfeedbackview2.default();
-	});
+		app_router.on('route:getPost', function (id) {
+				var questionfeedbackView = new _questionfeedbackview2.default();
+		});
 
-	app_router.on('route:defaultRoute', function (actions) {
-		var commentView = new _commentview2.default();
-		var valView = new _textareaview2.default();
-		var taxonomyView = new _taxonomyview2.default({ myVar: $('#values').val() });
-	});
-	// Start Backbone history a necessary step for bookmarkable URL's
-	Backbone.history.start();
+		app_router.on('route:defaultRoute', function (actions) {
+				var commentView = new _commentview2.default();
+				var valView = new _textareaview2.default();
+				var taxonomyView = new _taxonomyview2.default({ myVar: $('#values').val() });
+		});
+		// Start Backbone history a necessary step for bookmarkable URL's
+		Backbone.history.start();
+
+		var proxiedSync = Backbone.sync;
+		Backbone.sync = function (method, model, options) {
+				options || (options = {});
+				if (!options.crossDomain) {
+						options.crossDomain = true;
+				}
+				if (!options.xhrFields) {
+						options.xhrFields = { withCredentials: true };
+				}
+				return proxiedSync(method, model, options);
+		};
 })();
 
 /***/ })
