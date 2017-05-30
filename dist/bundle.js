@@ -13997,7 +13997,7 @@ var CommentView = _backbone.View.extend({
   },
   showmodal: function showmodal() {
     (0, _jquery2.default)('body').append('<div class="overlay"></div><div id="modalshare" class="modall"><h5>Deel deze vraag</h5><input class="urlval" type="text"/><a class="btncopy">COPY</a></div>');
-    (0, _jquery2.default)(".urlval").val("https://67.205.189.184/#/posts/1");
+    (0, _jquery2.default)(".urlval").val("http://67.205.189.184/#/posts/1");
   },
   hidemodal: function hidemodal() {
     (0, _jquery2.default)(".overlay").remove();
