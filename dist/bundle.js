@@ -13831,20 +13831,20 @@ var TaxonomyView = _backbone.View.extend({
 
     (0, _jquery2.default)(".reproductie").on("click", function () {
       (0, _jquery2.default)(this).addClass('handselected');
-      (0, _jquery2.default)(".toepassing").removeClass("selected");
-      (0, _jquery2.default)(".inzicht").removeClass("selected");
+      (0, _jquery2.default)(".toepassing").removeClass("handselected");
+      (0, _jquery2.default)(".inzicht").removeClass("handselected");
     });
 
     (0, _jquery2.default)(".toepassing").on("click", function () {
       (0, _jquery2.default)(this).addClass('handselected');
-      (0, _jquery2.default)(".reproductie").removeClass("selected");
-      (0, _jquery2.default)(".inzicht").removeClass("selected");
+      (0, _jquery2.default)(".reproductie").removeClass("handselected");
+      (0, _jquery2.default)(".inzicht").removeClass("handselected");
     });
 
     (0, _jquery2.default)(".inzicht").on("click", function () {
       (0, _jquery2.default)(this).addClass('handselected');
-      (0, _jquery2.default)(".reproductie").removeClass("selected");
-      (0, _jquery2.default)(".toepassing").removeClass("selected");
+      (0, _jquery2.default)(".reproductie").removeClass("handselected");
+      (0, _jquery2.default)(".toepassing").removeClass("handselected");
     });
   },
   render: function render() {

@@ -11,20 +11,20 @@ const TaxonomyView = View.extend({
 
         $( ".reproductie" ).on( "click", function() {
               $(this).addClass('handselected');
-              $(".toepassing").removeClass("selected");
-              $(".inzicht").removeClass("selected");
+              $(".toepassing").removeClass("handselected");
+              $(".inzicht").removeClass("handselected");
           });
 
           $( ".toepassing" ).on( "click", function() {
                 $(this).addClass('handselected');
-                $(".reproductie").removeClass("selected");
-                $(".inzicht").removeClass("selected");
+                $(".reproductie").removeClass("handselected");
+                $(".inzicht").removeClass("handselected");
             });
 
           $( ".inzicht" ).on( "click", function() {
                 $(this).addClass('handselected');
-                $(".reproductie").removeClass("selected");
-                $(".toepassing").removeClass("selected");
+                $(".reproductie").removeClass("handselected");
+                $(".toepassing").removeClass("handselected");
             });
 
     },
