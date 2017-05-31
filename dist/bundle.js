@@ -14173,17 +14173,25 @@ var TextAreaView = _backbone.View.extend({
     console.log('value;', values);
     var keywordView = new _keywordview2.default({ keywords: values });
     console.log((0, _jquery2.default)('#values').text());
-    var taxonomy = new _taxonomy2.default({ url: "http://188.226.157.168/task?introduction=" + values });
-    var spelling = new _spelling2.default({ url: "http://188.226.157.168/spelling?text=" + values });
+    var taxonomy = new _taxonomy2.default({ url: "http://localhost:8000/task?introduction=" + values });
+    var spelling = new _spelling2.default({ url: "http://localhost:8000/spelling?text=" + values });
 
-    // taxonomy.destroy();
-    taxonomy.fetch({
+    var fetchXhr = taxonomy.fetch();
+    if (fetchXhr != undefined && fetchXhr.readyState > 0 && fetchXhr.readyState < 4) {
+      fetchXhr.abort();
+    }
+
+    var stop = taxonomy.fetch({
       success: function success(collection, response) {
         var taxonomyView = new _taxonomyview2.default({ taxonomy: response.category });
       }
     });
 
-    // spelling.destroy();
+    var sfetchXhr = spelling.fetch();
+    if (sfetchXhr != undefined && fetchXhr.readyState > 0 && fetchXhr.readyState < 4) {
+      sfetchXhr.abort();
+    }
+
     spelling.fetch({
       success: function success(collection, response) {
         var words = (0, _jquery2.default)("#values").text().split(" ");

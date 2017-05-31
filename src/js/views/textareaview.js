@@ -37,17 +37,25 @@ const TextAreaView = View.extend({
       console.log('value;',values)
       var keywordView = new KeywordView({keywords: values});
       console.log($('#values').text())
-      var taxonomy = new Taxonomy({url: "http://188.226.157.168/task?introduction=" + values});
-      var spelling = new Spelling({url: "http://188.226.157.168/spelling?text=" + values});
+      var taxonomy = new Taxonomy({url: "http://localhost:8000/task?introduction=" + values});
+      var spelling = new Spelling({url: "http://localhost:8000/spelling?text=" + values});
 
-      // taxonomy.destroy();
-      taxonomy.fetch({
+      var fetchXhr = taxonomy.fetch();
+      if(fetchXhr != undefined && fetchXhr.readyState > 0 && fetchXhr.readyState < 4){
+        fetchXhr.abort();
+      }
+
+      var stop = taxonomy.fetch({
         success: function(collection, response) {
           var taxonomyView = new TaxonomyView({taxonomy: response.category});
         }
       });
 
-      // spelling.destroy();
+      var sfetchXhr = spelling.fetch();
+      if(sfetchXhr != undefined && fetchXhr.readyState > 0 && fetchXhr.readyState < 4){
+        sfetchXhr.abort();
+      }
+
       spelling.fetch({
         success: function(collection, response) {
             var words = $("#values").text().split(" ");
@@ -72,6 +80,7 @@ const TextAreaView = View.extend({
             });
         }
       });
+
     },
     render: function(){
       var question = new Question({url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/1'});
