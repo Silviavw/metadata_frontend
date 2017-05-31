@@ -28,20 +28,26 @@ import QuestionfeedbackView from './views/questionfeedbackview';
 	var AppRouter = Backbone.Router.extend({
 	    routes: {
 	        "posts/:id": "getPost",
-	        "": "defaultRoute"
+	        "questions/:id": "questionsDetailRoute",
+					"questions": "questionsRoute"
+
 	    }
 	});
 	// Instantiate the router
 	var app_router = new AppRouter;
 
 	app_router.on('route:getPost', function (id) {
-		var questionfeedbackView = new QuestionfeedbackView();
+		var questionfeedbackView = new QuestionfeedbackView({myId: id});
 	});
 
-	app_router.on('route:defaultRoute', function (actions) {
-		var commentView = new CommentView();
-		var valView = new TextAreaView();
+	app_router.on('route:questionsDetailRoute', function (id) {
+		var commentView = new CommentView({myId: id});
+		var valView = new TextAreaView({myId: id});
 	  var taxonomyView = new TaxonomyView({myVar: $('#values').val()});
+	});
+
+	app_router.on('route:questionsRoute', function () {
+
 	});
 	// Start Backbone history a necessary step for bookmarkable URL's
 	Backbone.history.start();

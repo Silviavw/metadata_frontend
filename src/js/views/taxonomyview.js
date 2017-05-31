@@ -13,18 +13,24 @@ const TaxonomyView = View.extend({
               $(this).addClass('handselected');
               $(".toepassing").removeClass("handselected");
               $(".inzicht").removeClass("handselected");
+              $(".toepassing").removeClass("selected");
+              $(".inzicht").removeClass("selected");
           });
 
           $( ".toepassing" ).on( "click", function() {
                 $(this).addClass('handselected');
                 $(".reproductie").removeClass("handselected");
                 $(".inzicht").removeClass("handselected");
+                $(".reproductie").removeClass("selected");
+                $(".inzicht").removeClass("selected");
             });
 
           $( ".inzicht" ).on( "click", function() {
                 $(this).addClass('handselected');
                 $(".reproductie").removeClass("handselected");
                 $(".toepassing").removeClass("handselected");
+                $(".reproductie").removeClass("selected");
+                $(".toepassing").removeClass("selected");
             });
 
     },

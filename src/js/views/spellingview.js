@@ -31,7 +31,7 @@ const SpellingView = View.extend({
       // Replace wrong spelling with suggestion
       function onSuggestionClick(e) {
         var replacementWord = e.currentTarget.innerHTML;
-        wordElement.html(replacementWord)
+        wordElement.html(replacementWord+" ")
 
         word.split('.').forEach(singleClass => {
           wordElement.removeClass(singleClass);

@@ -3,7 +3,6 @@ body {
   padding:0;
   background-color: white;
   font-family: 'Open Sans', sans-serif;
-  max-width: 1200px;
 }
 
 .textvak {
@@ -57,13 +56,10 @@ body {
   height:800px;
   background-color: #E1E1E1;
   padding: 25px !important;
-  margin-top: 50px;
 }
 
 .filterpanel{
-  background-color: rgb(51, 122, 183);
-  height:60px;
-  position: absolute;
+  padding-left: 40px;
 }
 
 .jumbotron{
@@ -141,8 +137,7 @@ border: solid black 1px;
 }
 
 .everything{
-  margin-left: 320px;
-  margin-top: 100px;
+
 }
 
 .feedback{
@@ -201,7 +196,7 @@ border: solid black 1px;
 
 .question .tooltip-taxonomy {
     visibility: hidden;
-    width: 350px;
+    /*width: 350px;*/
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -212,7 +207,7 @@ border: solid black 1px;
     z-index: 1;
     font-size: 11px;
     font-weight: 200;
-    left: -165px;
+    left: -47px;
     bottom: 30px;
     /*margin-bottom: inherit;*/
 
@@ -308,7 +303,7 @@ padding: 25px;
     filter:alpha(opacity=50);
     -moz-opacity:0.5;
     -khtml-opacity: 0.5;
-    opacity: 0.5;
+    opacity: 0.2;
     z-index: 10000;
 }
 
@@ -382,4 +377,85 @@ h5{
 
 .namefield{
   width: 78%;
+}
+
+.loader {
+  opacity:0;
+  border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 30px;
+    height: 30px;
+    margin-top: -55px;
+    margin-right: 5px;
+    float:right;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.headercontainer{
+  height:70px;
+  background-color:rgb(51, 122, 183);;
+  width:100%;
+}
+
+.categoryadd{
+  background-color: white;
+  width: 100%;
+  height: 80px;
+  border: solid 1px rgb(51, 122, 183);
+  border-radius:5px;
+  color: lightgrey;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.sugcategory{
+  color: #337ab7;
+    text-decoration: none;
+    background-color: white;
+    border: solid 1px #337ab7;
+    font-size: 10px;
+    padding: 2px;
+    display: inline-block;
+    margin: 2px;
+}
+.sugcategory:hover{
+  text-decoration: none;
+  color: #337ab7;
+}
+
+.minisubtitle{
+  margin-bottom: 3px !important;
+  margin-top:15px !important;
+}
+
+.tag-categorie{
+  color: white;
+background-color: rgb(51, 122, 183);
+padding: 3px;
+font-size: 11px;
+border-radius: 3px;
+margin:1px;
+line-height: 2;
+}
+
+.rmtag{
+  color: white;
+  cursor:pointer;
+  padding:3px;
+  font-weight:600;
+}
+.rmtag:hover{
+  text-decoration: none;
+  color:white;
 }

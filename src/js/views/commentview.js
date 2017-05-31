@@ -19,14 +19,17 @@ const CommentView = View.extend({
       comment.fetch({
         success: function(collection, response) {
           for (var records of response.comment.records) {
-              $('.comments').append('<div class="comment"><p><span>'+records[2]+'</span><br>'+records[1]+'</p></div><br>')
+              if (records[3] == this.options.myId){
+                $('.comments').append('<div class="comment"><p><span>'+records[2]+'</span><br>'+records[1]+'</p></div><br>')
+              }
           }
-        }
+        }.bind(this)
       })
     },
     showmodal: function(){
+      console.log("SHOW!");
       $('body').append('<div class="overlay"></div><div id="modalshare" class="modall"><h5>Deel deze vraag</h5><input class="urlval" type="text"/><a class="btncopy">COPY</a></div>');
-      $(".urlval").val("http://67.205.189.184/#/posts/1");
+      $(".urlval").val("http://67.205.189.184/#/posts/"+this.options.myId);
     },
     hidemodal: function(){
       $(".overlay").remove();

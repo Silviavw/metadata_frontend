@@ -17,7 +17,7 @@ const QuestionfeedbackView = View.extend({
       console.log("REMOVER THIS SHIT",$(".modalshare"));
       $("#modalshare, .overlay").remove();
 
-      var question = new Question({url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/1'});
+      var question = new Question({url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/'+this.options.myId});
       question.fetch({
         success: function(collection, response) {
           $('.vraag').text(response.question);
@@ -42,7 +42,7 @@ const QuestionfeedbackView = View.extend({
           "data": {
             "comment": $('.commentarea').val(),
             "username": $('.namefield').val(),
-            "questionid": 1,
+            "questionid": this.options.myId,
             "approved": false
           }
         }

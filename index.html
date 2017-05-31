@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="src/css/main.css">
 </head>
 <body>
+  <div class="headercontainer"></div>
   <div class="container">
 
     <!-- Classificatie -->
@@ -40,7 +41,23 @@
         <!-- </div> -->
       </script>
 
-      <div class="col-md-3" style='padding:0;'>
+      <script id="questionsoverviewTemplate" type="text/template">
+        <div class="headercontainer"></div>
+        <div class="container">
+        <div class="row tax">
+
+      <div class="col-md-3 col-sm-3 col-xs-12" style="padding:0;">
+        <div class="sidepanel">
+        </div>
+      </div>
+
+      <div class="col-md-9 col-sm-9 col-xs-12 filterpanel">
+    </div>
+  </div>
+</div>
+      </script>
+
+      <div class="col-md-3 col-sm-4 col-xs-12" style='padding:0;'>
         <div class="sidepanel">
 
 
@@ -54,16 +71,22 @@
             <div class='question'><span>?</span><span class="tooltip-taxonomy">De leerling krijgt geen methode, context of situatie aangeboden, maar alleen een vraagstuk. Hij moet zelf bepalen hoe hij het gaat aanpakken. De leerling heeft alleen de leerstof tot zijn beschikking om de vraag op te lossen. Hij laat zien dat hij vanuit verschillende, ook nieuwe, perspectieven kan denken.</span></div>
           </div>
 
-            <!-- <h4>Snel zoeken</h4>
+            <h4>Categorie</h4>
+            <div class="categoryadd" contenteditable><span class="tag-categorie">persoonsvorm<a href="#" class="rmtag">x</a></span>Voeg categorie toe... </div>
+            <h6 class="minisubitle">Voorgestelde categorieen:</h6>
             <div class="keywords">
-            </div> -->
+            </div>
         </div>
       </div>
 
-      <div class="col-md-11 filterpanel">
+      <div class="col-md-9 col-sm-8 col-xs-12 filterpanel">
       <div class="everything">
+
         <h3 class="vraagantwoordtitle">Vraag</h3>
-        <div class="textvak vraag" id='values' contenteditable></div>
+        <div class="textvak vraag" id='values' contenteditable>
+        </div>
+        <div class="loader"></div>
+
         <h3 class="vraagantwoordtitle">Antwoord</h3>
         <div class="textvak antwoord" contenteditable></div>
 
@@ -73,9 +96,12 @@
         <div class="comments">
         </div>
 
-      </div>
+
+
+
+      <!-- </div>
         <div class="tips">
-      </div>
+      </div> -->
 
       </div>
     </div>
