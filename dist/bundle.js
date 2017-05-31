@@ -14173,8 +14173,8 @@ var TextAreaView = _backbone.View.extend({
     console.log('value;', values);
     var keywordView = new _keywordview2.default({ keywords: values });
     console.log((0, _jquery2.default)('#values').text());
-    var taxonomy = new _taxonomy2.default({ url: "http://localhost:8000/task?introduction=" + values });
-    var spelling = new _spelling2.default({ url: "http://localhost:8000/spelling?text=" + values });
+    var taxonomy = new _taxonomy2.default({ url: "http://67.205.189.184/task?introduction=" + values });
+    var spelling = new _spelling2.default({ url: "http://67.205.189.184/spelling?text=" + values });
 
     var fetchXhr = taxonomy.fetch();
     if (fetchXhr != undefined && fetchXhr.readyState > 0 && fetchXhr.readyState < 4) {
