@@ -19,7 +19,7 @@ const TextAreaView = View.extend({
     initialize: function(options) {
       this.options = options;
       this.typingTimer;
-      this.doneTypingInterval = 400;
+      this.doneTypingInterval = 1000;
       this.render();
     },
     keyup : function(event) {
@@ -40,12 +40,14 @@ const TextAreaView = View.extend({
       var taxonomy = new Taxonomy({url: "http://188.226.157.168/task?introduction=" + values});
       var spelling = new Spelling({url: "http://188.226.157.168/spelling?text=" + values});
 
+      // taxonomy.destroy();
       taxonomy.fetch({
         success: function(collection, response) {
           var taxonomyView = new TaxonomyView({taxonomy: response.category});
         }
       });
 
+      // spelling.destroy();
       spelling.fetch({
         success: function(collection, response) {
             var words = $("#values").text().split(" ");

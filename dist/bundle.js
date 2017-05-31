@@ -14155,7 +14155,7 @@ var TextAreaView = _backbone.View.extend({
   initialize: function initialize(options) {
     this.options = options;
     this.typingTimer;
-    this.doneTypingInterval = 400;
+    this.doneTypingInterval = 1000;
     this.render();
   },
   keyup: function keyup(event) {
@@ -14176,12 +14176,14 @@ var TextAreaView = _backbone.View.extend({
     var taxonomy = new _taxonomy2.default({ url: "http://188.226.157.168/task?introduction=" + values });
     var spelling = new _spelling2.default({ url: "http://188.226.157.168/spelling?text=" + values });
 
+    // taxonomy.destroy();
     taxonomy.fetch({
       success: function success(collection, response) {
         var taxonomyView = new _taxonomyview2.default({ taxonomy: response.category });
       }
     });
 
+    // spelling.destroy();
     spelling.fetch({
       success: function success(collection, response) {
         var words = (0, _jquery2.default)("#values").text().split(" ");
