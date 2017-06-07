@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1992,7 +1992,7 @@
   return Backbone;
 });
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
 
 /***/ }),
 /* 1 */
@@ -13953,7 +13953,62 @@ var _underscore = __webpack_require__(2);
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _comment = __webpack_require__(10);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CategoryView = _backbone.View.extend({
+  el: 'body',
+  events: {
+    'click .rmtag': 'remove',
+    'keypress .categoryadd': 'addcategory',
+    'click .glyphicon': 'back'
+  },
+  initialize: function initialize(options) {
+    this.options = options;
+    this.render();
+  },
+  remove: function remove(e) {
+    (0, _jquery2.default)(e.currentTarget).parent().remove();
+  },
+  addcategory: function addcategory(e) {
+    if (e.which == 13) {
+      e.preventDefault();
+      var word = (0, _jquery2.default)(e.currentTarget).clone().children().remove().end().text();
+      (0, _jquery2.default)(".categoryadd").append('<span class="tag-categorie" contenteditable="false">' + word + '<a class="rmtag">x</a></span>');
+    }
+  },
+  render: function render() {
+    (0, _jquery2.default)('.headercontainer').append('<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>');
+  },
+  back: function back() {
+    window.location.href = 'http://localhost/afstuderen/backbone_afstudeeropdracht/#/questions';
+    location.reload();
+  }
+});
+
+exports.default = CategoryView;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _backbone = __webpack_require__(0);
+
+var _jquery = __webpack_require__(1);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _underscore = __webpack_require__(2);
+
+var _underscore2 = _interopRequireDefault(_underscore);
+
+var _comment = __webpack_require__(11);
 
 var _comment2 = _interopRequireDefault(_comment);
 
@@ -13971,7 +14026,7 @@ var CommentView = _backbone.View.extend({
     'click .btncopy': 'copyclipboard'
   },
   render: function render() {
-    var comment = new _comment2.default({ url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/comment' });
+    var comment = new _comment2.default({ url: 'http://67.207.94.162/api.php/comment' });
     comment.fetch({
       success: function (collection, response) {
         var _iteratorNormalCompletion = true;
@@ -13982,8 +14037,9 @@ var CommentView = _backbone.View.extend({
           for (var _iterator = response.comment.records[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var records = _step.value;
 
-            if (records[3] == this.options.myId) {
-              (0, _jquery2.default)('.comments').append('<div class="comment"><p><span>' + records[2] + '</span><br>' + records[1] + '</p></div><br>');
+            console.log(records);
+            if (records[2] == this.options.myId) {
+              (0, _jquery2.default)('.comments').append('<div class="comment"><p><span>' + records[3] + '</span><br>' + records[1] + '</p></div><br>');
             }
           }
         } catch (err) {
@@ -14004,9 +14060,8 @@ var CommentView = _backbone.View.extend({
     });
   },
   showmodal: function showmodal() {
-    console.log("SHOW!");
     (0, _jquery2.default)('body').append('<div class="overlay"></div><div id="modalshare" class="modall"><h5>Deel deze vraag</h5><input class="urlval" type="text"/><a class="btncopy">COPY</a></div>');
-    (0, _jquery2.default)(".urlval").val("http://67.205.189.184/#/posts/" + this.options.myId);
+    (0, _jquery2.default)(".urlval").val("http://localhost/afstuderen/backbone_afstudeeropdracht/#/feedback/" + this.options.myId);
   },
   hidemodal: function hidemodal() {
     (0, _jquery2.default)(".overlay").remove();
@@ -14015,7 +14070,6 @@ var CommentView = _backbone.View.extend({
   copyclipboard: function copyclipboard() {
     var copyTextarea = document.querySelector('.urlval');
     copyTextarea.select();
-
     try {
       var successful = document.execCommand('copy');
       var msg = successful ? 'successful' : 'unsuccessful';
@@ -14029,7 +14083,7 @@ var CommentView = _backbone.View.extend({
 exports.default = CommentView;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14066,15 +14120,13 @@ var QuestionfeedbackView = _backbone.View.extend({
     this.render();
   },
   render: function render() {
-    console.log("REMOVER THIS SHIT", (0, _jquery2.default)(".modalshare"));
     (0, _jquery2.default)("#modalshare, .overlay").remove();
 
-    var question = new _question2.default({ url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/' + this.options.myId });
+    var question = new _question2.default({ url: 'http://67.207.94.162/api.php/question/' + this.options.myId });
     question.fetch({
       success: function (collection, response) {
         (0, _jquery2.default)('.vraag').text(response.question);
         (0, _jquery2.default)('.antwoord').text(response.answer);
-        console.log(response);
         (0, _jquery2.default)('.tax').html(this.template(response));
       }.bind(this)
     });
@@ -14086,7 +14138,7 @@ var QuestionfeedbackView = _backbone.View.extend({
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/comment",
+      "url": "http://67.207.94.162/api.php/comment",
       "method": "POST",
       "headers": {
         "content-type": "application/x-www-form-urlencoded"
@@ -14094,21 +14146,23 @@ var QuestionfeedbackView = _backbone.View.extend({
       "data": {
         "comment": (0, _jquery2.default)('.commentarea').val(),
         "username": (0, _jquery2.default)('.namefield').val(),
-        "questionid": this.options.myId,
-        "approved": false
+        "question_id": this.options.myId
+        // "approved": false
       }
     };
 
     _jquery2.default.ajax(settings).done(function (response) {
       setTimeout('$(".opslaan").removeAttr("disabled")', 1500);
-    });
+      (0, _jquery2.default)('.backgr').empty();
+      (0, _jquery2.default)('.backgr').append('<h2 class="modaltextt">Bedankt voor uw feedback!</h2>');
+    }.bind(this));
   }
 });
 
 exports.default = QuestionfeedbackView;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14132,11 +14186,11 @@ var _taxonomyview = __webpack_require__(4);
 
 var _taxonomyview2 = _interopRequireDefault(_taxonomyview);
 
-var _keywordview = __webpack_require__(11);
+var _keywordview = __webpack_require__(12);
 
 var _keywordview2 = _interopRequireDefault(_keywordview);
 
-var _spellingview = __webpack_require__(12);
+var _spellingview = __webpack_require__(13);
 
 var _spellingview2 = _interopRequireDefault(_spellingview);
 
@@ -14157,8 +14211,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var TextAreaView = Backbone.View.extend({
   el: 'body',
   events: {
-    'keyup #values': 'keyup',
-    'keydown #values': 'keydown',
+    'keyup #values': 'keyupquestion',
+    'keydown #values': 'keydownquestion',
+    'keyup .antwoord': 'keyupanswer',
+    'keydown .antwoord': 'keydownanswer',
     'click .save': 'save'
   },
   initialize: function initialize(options) {
@@ -14167,41 +14223,48 @@ var TextAreaView = Backbone.View.extend({
     this.doneTypingInterval = 1000;
     this.render();
   },
-  keyup: function keyup(event) {
+  keyupquestion: function keyupquestion(event) {
     clearTimeout(this.typingTimer);
     this.typingTimer = setTimeout(this.doneTyping, this.doneTypingInterval);
   },
-  keydown: function keydown(event) {
+  keyupanswer: function keyupanswer(event) {
+    clearTimeout(this.typingTimer);
+    this.typingTimer = setTimeout(this.doneTypingAnswer, this.doneTypingInterval);
+  },
+  keydownquestion: function keydownquestion(event) {
+    clearTimeout(this.typingTimer);
+  },
+  keydownanswer: function keydownanswer(event) {
     clearTimeout(this.typingTimer);
   },
   doneTyping: function doneTyping() {
     (0, _jquery2.default)('ul.suggestions-wrapper').remove();
-
     var values = (0, _jquery2.default)('#values').text();
 
-    console.log((0, _jquery2.default)('#values').text());
+    stopCurrentFetches(this.fetchTaxonomy, this.fetchSpelling);
+
     var taxonomy = new _taxonomy2.default({ url: "http://localhost:8000/task?introduction=" + values });
     var spelling = new _spelling2.default({ url: "http://localhost:8000/spelling?text=" + values });
 
-    var fetchXhr = taxonomy.fetch({
+    this.fetchTaxonomy = taxonomy.fetch({
       success: function success(collection, response) {
         var taxonomyView = new _taxonomyview2.default({ taxonomy: response.category });
       },
       abortRequests: true
     });
 
-    var sfetchXhr = spelling.fetch({
+    this.fetchSpelling = spelling.fetch({
       success: function success(collection, response) {
-        var words = (0, _jquery2.default)("#values").text().split(" ");
+        var words = values.split(" ");
         (0, _jquery2.default)("#values").empty();
 
         _jquery2.default.each(words, function (i, v) {
           if (!response.words[i] || response.words[i].correct) {
             // Set good spelling word
-            (0, _jquery2.default)("#values").append((0, _jquery2.default)("<span class='word'>").text(v + " "));
+            (0, _jquery2.default)("#values").append((0, _jquery2.default)("<span class='word'>").text(v)).append("&nbsp;");
           } else {
             // Create badspelling word
-            var badspelling = (0, _jquery2.default)("#values").append((0, _jquery2.default)("<span class='word badspelling " + i + "'>").text(v + " "));
+            var badspelling = (0, _jquery2.default)("#values").append((0, _jquery2.default)("<span class='word badspelling " + i + "'>").text(v)).append("&nbsp;");
 
             // Append suggestions list
             var spellingView = new _spellingview2.default({
@@ -14220,9 +14283,61 @@ var TextAreaView = Backbone.View.extend({
         (0, _jquery2.default)(".loader").css({ opacity: 0 });
       }
     });
+
+    function stopCurrentFetches(fetchTaxonomy, fetchSpelling) {
+      //Stop pending fetch
+      if (fetchTaxonomy && fetchTaxonomy.readyState > 0 && fetchTaxonomy.readyState < 4) {
+        fetchTaxonomy.abort();
+      }
+      if (fetchSpelling && fetchSpelling.readyState > 0 && fetchSpelling.readyState < 4) {
+        fetchSpelling.abort();
+      }
+    }
+  },
+  doneTypingAnswer: function doneTypingAnswer() {
+    stopCurrentFetches(this.fetchSpellingAnswer);
+    var vals = (0, _jquery2.default)('.antwoord').text();
+    var spelling = new _spelling2.default({ url: "http://localhost:8000/spelling?text=" + vals });
+
+    this.fetchSpellingAnswer = spelling.fetch({
+      success: function success(collection, response) {
+        var words = vals.split(" ");
+        (0, _jquery2.default)(".antwoord").empty();
+
+        _jquery2.default.each(words, function (i, v) {
+          if (!response.words[i] || response.words[i].correct) {
+            // Set good spelling word
+            (0, _jquery2.default)(".antwoord").append((0, _jquery2.default)("<span class='word'>").text(v)).append("&nbsp;");
+          } else {
+            // Create badspelling word
+            var badspelling = (0, _jquery2.default)(".antwoord").append((0, _jquery2.default)("<span class='word badspelling " + i + "'>").text(v)).append("&nbsp;");
+
+            // Append suggestions list
+            var spellingView = new _spellingview2.default({
+              itemclass: '.badspelling.' + i,
+              suggestions: response.words[i].suggestion
+            });
+          }
+        });
+      },
+      beforeSend: function beforeSend() {
+        (0, _jquery2.default)(".answerloader").css({ opacity: 1 });
+      },
+      complete: function complete() {
+        (0, _jquery2.default)(".answerloader").css({ opacity: 0 });
+      }
+    });
+
+    function stopCurrentFetches(fetchSpelling) {
+      //Stop pending fetch
+      if (fetchSpelling && fetchSpelling.readyState > 0 && fetchSpelling.readyState < 4) {
+        fetchSpelling.abort();
+      }
+    }
   },
   render: function render() {
-    var question = new _question2.default({ url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/' + this.options.myId });
+    var question = new _question2.default({ url: 'http://67.207.94.162/api.php/question/' + this.options.myId });
+
     question.fetch({
       success: function success(collection, response) {
         (0, _jquery2.default)('.vraag').text(response.question);
@@ -14240,7 +14355,7 @@ var TextAreaView = Backbone.View.extend({
     _jquery2.default.ajax({
       "async": true,
       "crossDomain": true,
-      "url": "https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/question/" + this.options.myId,
+      "url": "http://67.207.94.162/api.php/question/" + this.options.myId,
       "method": "PUT",
       "headers": {
         "content-type": "application/x-www-form-urlencoded"
@@ -14253,12 +14368,13 @@ var TextAreaView = Backbone.View.extend({
       this.render();
     }.bind(this));
   }
+
 });
 
 exports.default = TextAreaView;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14278,7 +14394,7 @@ var Comment = _backbone.Model.extend({
 exports.default = Comment;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14301,30 +14417,30 @@ var _underscore2 = _interopRequireDefault(_underscore);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var KeywordView = _backbone.View.extend({
+  el: 'body',
   initialize: function initialize(options) {
     this.options = options;
     this.render();
   },
+  events: {
+    'click .sugcategory': 'addcategory'
+  },
   render: function render() {
-    // $(".keywords").html(this.options.keywords);
-    console.log(this.options.keywords);
     (0, _jquery2.default)(".keywords").empty();
-
+    (0, _jquery2.default)(".keywords").append('<h6 class="minisubitle">Voorgestelde categorieen:</h6>');
     for (var keyword in this.options.keywords) {
-      (0, _jquery2.default)(".keywords").append("<a class='sugcategory' target='_blank' href='http://www.google.com/search?q=" + this.options.keywords[keyword] + "'>" + this.options.keywords[keyword] + " </a>");
+      (0, _jquery2.default)(".keywords").append("<a class='sugcategory'>" + this.options.keywords[keyword] + " </a>");
     }
+  },
+  addcategory: function addcategory(e) {
+    (0, _jquery2.default)(".categoryadd").append('<span class="tag-categorie">' + (0, _jquery2.default)(e.currentTarget).text() + '<a class="rmtag">x</a></span>');
   }
-  // checkspelling: function(settings){
-  //   $.ajax(settings).done(function (response) {
-  //     console.log(response);
-  //   });
-  // }
 });
 
 exports.default = KeywordView;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14391,7 +14507,7 @@ var SpellingView = _backbone.View.extend({
 exports.default = SpellingView;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 var g;
@@ -14418,7 +14534,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14432,7 +14548,7 @@ var _underscore = __webpack_require__(2);
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _textareaview = __webpack_require__(9);
+var _textareaview = __webpack_require__(10);
 
 var _textareaview2 = _interopRequireDefault(_textareaview);
 
@@ -14440,7 +14556,7 @@ var _taxonomyview = __webpack_require__(4);
 
 var _taxonomyview2 = _interopRequireDefault(_taxonomyview);
 
-var _commentview = __webpack_require__(7);
+var _commentview = __webpack_require__(8);
 
 var _commentview2 = _interopRequireDefault(_commentview);
 
@@ -14448,9 +14564,17 @@ var _taxonomy = __webpack_require__(3);
 
 var _taxonomy2 = _interopRequireDefault(_taxonomy);
 
-var _questionfeedbackview = __webpack_require__(8);
+var _questionfeedbackview = __webpack_require__(9);
 
 var _questionfeedbackview2 = _interopRequireDefault(_questionfeedbackview);
+
+var _categoryview = __webpack_require__(7);
+
+var _categoryview2 = _interopRequireDefault(_categoryview);
+
+var _questionsview = __webpack_require__(16);
+
+var _questionsview2 = _interopRequireDefault(_questionsview);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14476,8 +14600,8 @@ window.$ = window.jQuery = _jquery2.default;
 	// Retrieve
 	var AppRouter = Backbone.Router.extend({
 		routes: {
-			"posts/:id": "getPost",
-			"questions/:id": "questionsDetailRoute",
+			"feedback/:id": "getPost",
+			"question/:id": "questionsDetailRoute",
 			"questions": "questionsRoute"
 
 		}
@@ -14493,12 +14617,73 @@ window.$ = window.jQuery = _jquery2.default;
 		var commentView = new _commentview2.default({ myId: id });
 		var valView = new _textareaview2.default({ myId: id });
 		var taxonomyView = new _taxonomyview2.default({ myVar: $('#values').val() });
+		var categoryView = new _categoryview2.default();
 	});
 
-	app_router.on('route:questionsRoute', function () {});
+	app_router.on('route:questionsRoute', function () {
+		var questionsView = new _questionsview2.default();
+	});
 	// Start Backbone history a necessary step for bookmarkable URL's
 	Backbone.history.start();
 })();
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _backbone = __webpack_require__(0);
+
+var _jquery = __webpack_require__(1);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _underscore = __webpack_require__(2);
+
+var _underscore2 = _interopRequireDefault(_underscore);
+
+var _question = __webpack_require__(5);
+
+var _question2 = _interopRequireDefault(_question);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var QuestionsView = _backbone.View.extend({
+  el: 'body',
+  events: {
+    'click .detailview': 'detailpage'
+  },
+  template: _underscore2.default.template((0, _jquery2.default)('#questionsoverviewTemplate').html()),
+  initialize: function initialize(options) {
+    this.options = options;
+    this.render();
+  },
+  render: function render() {
+    var question = new _question2.default({ url: 'http://67.207.94.162/api.php/question' });
+    question.fetch({
+      success: function (collection, response) {
+        (0, _jquery2.default)('.tax').html(this.template(response));
+        (0, _jquery2.default)("tbody tr").each(function () {
+          var id = (0, _jquery2.default)(this).children()[0].innerHTML;
+          (0, _jquery2.default)(this).append("<td><a class='detailview'>bewerk</a></td>");
+        });
+      }.bind(this)
+    });
+  },
+  detailpage: function detailpage(e) {
+    var id = e.currentTarget.offsetParent.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
+    window.location.href = 'http://localhost/afstuderen/backbone_afstudeeropdracht/#/question/' + id;
+    location.reload();
+  }
+});
+
+exports.default = QuestionsView;
 
 /***/ })
 /******/ ]);

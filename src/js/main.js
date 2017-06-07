@@ -7,6 +7,8 @@ import TaxonomyView from './views/taxonomyview';
 import CommentView from './views/commentview';
 import Taxonomy from './models/taxonomy';
 import QuestionfeedbackView from './views/questionfeedbackview';
+import CategoryView from './views/categoryview';
+import QuestionsView from './views/questionsview';
 
 // import mongo from 'mongodb';
 
@@ -27,8 +29,8 @@ import QuestionfeedbackView from './views/questionfeedbackview';
 	// Retrieve
 	var AppRouter = Backbone.Router.extend({
 	    routes: {
-	        "posts/:id": "getPost",
-	        "questions/:id": "questionsDetailRoute",
+	        "feedback/:id": "getPost",
+	        "question/:id": "questionsDetailRoute",
 					"questions": "questionsRoute"
 
 	    }
@@ -44,9 +46,11 @@ import QuestionfeedbackView from './views/questionfeedbackview';
 		var commentView = new CommentView({myId: id});
 		var valView = new TextAreaView({myId: id});
 	  var taxonomyView = new TaxonomyView({myVar: $('#values').val()});
+		var categoryView = new CategoryView();
 	});
 
 	app_router.on('route:questionsRoute', function () {
+		var questionsView = new QuestionsView();
 
 	});
 	// Start Backbone history a necessary step for bookmarkable URL's

@@ -15,21 +15,21 @@ const CommentView = View.extend({
       'click .btncopy': 'copyclipboard'
     },
     render: function(){
-      var comment = new Comment({url: 'https://stud.hosted.hr.nl/0878133/php-crud-api/api.php/comment'});
+      var comment = new Comment({url: 'http://67.207.94.162/api.php/comment'});
       comment.fetch({
         success: function(collection, response) {
           for (var records of response.comment.records) {
-              if (records[3] == this.options.myId){
-                $('.comments').append('<div class="comment"><p><span>'+records[2]+'</span><br>'+records[1]+'</p></div><br>')
+            console.log(records);
+              if (records[2] == this.options.myId){
+                $('.comments').append('<div class="comment"><p><span>'+records[3]+'</span><br>'+records[1]+'</p></div><br>')
               }
           }
         }.bind(this)
       })
     },
     showmodal: function(){
-      console.log("SHOW!");
       $('body').append('<div class="overlay"></div><div id="modalshare" class="modall"><h5>Deel deze vraag</h5><input class="urlval" type="text"/><a class="btncopy">COPY</a></div>');
-      $(".urlval").val("http://67.205.189.184/#/posts/"+this.options.myId);
+      $(".urlval").val("http://localhost/afstuderen/backbone_afstudeeropdracht/#/feedback/"+this.options.myId);
     },
     hidemodal: function(){
       $(".overlay").remove();
@@ -38,7 +38,6 @@ const CommentView = View.extend({
     copyclipboard: function(){
       var copyTextarea = document.querySelector('.urlval');
       copyTextarea.select();
-
       try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';

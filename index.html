@@ -13,16 +13,9 @@
     <!-- Classificatie -->
     <div class="row tax">
       <script id="feedbackTemplate" type="text/template">
-        <!-- <div class="modall"> -->
+
           <div class="col-md-6 col-md-offset-3 backgr">
-
-          <h2 class="modaltextt">Geef feedback op de onderstaande vraag:</h2>
-
-          <div class="questionexample">
-            <span class="naamtitle">Naam:</span><input type="text" class='namefield'/>
-
-            <textarea class='commentarea'></textarea>
-            <a class="save opslaan">Verzenden</a>
+            <h2 class="modaltextt">Geef feedback op de onderstaande vraag:</h2>
 
             <div class="qwrapper">
               <div class="previewwrapper" style="background-color:rgb(51, 122, 183);">
@@ -35,6 +28,11 @@
             </div>
 
           </div>
+          <div class="questionexample">
+            <span class="naamtitle">Naam:</span><input type="text" class='namefield'/>
+
+            <textarea class='commentarea'></textarea>
+            <a class="save opslaan">Verzenden</a>
           </div>
         </div>
 
@@ -42,26 +40,40 @@
       </script>
 
       <script id="questionsoverviewTemplate" type="text/template">
-        <div class="headercontainer"></div>
-        <div class="container">
-        <div class="row tax">
-
-      <div class="col-md-3 col-sm-3 col-xs-12" style="padding:0;">
-        <div class="sidepanel">
-        </div>
-      </div>
-
-      <div class="col-md-9 col-sm-9 col-xs-12 filterpanel">
-    </div>
+        <div class="col-md-8 col-md-offset-2 backgr">
+          <h4>Overzicht</h4>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+      <tr>
+        <th>#</th>
+        <th>Vraag</th>
+        <th>Antwoord</th>
+        <th>Bewerk</th>
+      </tr>
+    </thead>
+      <% for(var tag in question.records) { %>
+        <div>
+          <tr>
+    <% _.each(question.records[tag], function(acs) { %>
+      <td class="itemspan"><%=acs%></td>
+      <% }); %>
+    </tr>
   </div>
-</div>
+      <% } %>
+    </table>
+    <!-- </tbody>
+   </table> -->
+  </div>
+
+        </div>
       </script>
 
       <div class="col-md-3 col-sm-4 col-xs-12" style='padding:0;'>
         <div class="sidepanel">
 
 
-            <h4>Soort vraag</h4>
+            <h4>Cognitief niveau</h4>
             <div class="taxonomy">
             <span class='reproductie label label-primary'>Reproductie</span>
             <div class='question'><span>?</span><span class="tooltip-taxonomy">Vragen op reproductieniveau zijn vragen waarbij de leerling zelf niets wezenlijks toe hoeft te voegen aan datgene wat hij geleerd heeft. Met deze vragen kan inzichtelijk gemaakt worden of de leerling de geleerde stof kan reproduceren. Denk bijvoorbeeld aan het kunnen reproduceren van warenkennis, gereedschapskennis, een stappenplan of de werking van apparatuur.</span></div>
@@ -71,9 +83,8 @@
             <div class='question'><span>?</span><span class="tooltip-taxonomy">De leerling krijgt geen methode, context of situatie aangeboden, maar alleen een vraagstuk. Hij moet zelf bepalen hoe hij het gaat aanpakken. De leerling heeft alleen de leerstof tot zijn beschikking om de vraag op te lossen. Hij laat zien dat hij vanuit verschillende, ook nieuwe, perspectieven kan denken.</span></div>
           </div>
 
-            <h4>Categorie</h4>
-            <div class="categoryadd" contenteditable><span class="tag-categorie">persoonsvorm<a href="#" class="rmtag">x</a></span>Voeg categorie toe... </div>
-            <h6 class="minisubitle">Voorgestelde categorieen:</h6>
+            <h4>Onderwerp</h4>
+            <div class="categoryadd" contenteditable="false"></div>
             <div class="keywords">
             </div>
         </div>
@@ -89,19 +100,13 @@
 
         <h3 class="vraagantwoordtitle">Antwoord</h3>
         <div class="textvak antwoord" contenteditable></div>
+        <div class="answerloader"></div>
 
         <a class="save">OPSLAAN</a>
 
         <div class="sameheight"><h2 class="feedback">FEEDBACK</h2><a class="deel">Deel link</a></div>
         <div class="comments">
         </div>
-
-
-
-
-      <!-- </div>
-        <div class="tips">
-      </div> -->
 
       </div>
     </div>
